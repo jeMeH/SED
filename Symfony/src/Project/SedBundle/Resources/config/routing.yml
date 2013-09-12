@@ -1,0 +1,31 @@
+inicio:
+    pattern:  /inicio
+    defaults: { _controller: ProjectSedBundle:Default:inicio }
+    
+docentes:
+    pattern:  /docentes
+    defaults: { _controller: ProjectSedBundle:Default:docentes }
+    
+materias:
+    pattern:  /materias
+    defaults: { _controller: ProjectSedBundle:Default:materias }
+    
+programas:
+    pattern:  /programas
+    defaults: { _controller: ProjectSedBundle:Default:programas }
+  
+cursos:
+    pattern:  /cursos
+    defaults: { _controller: ProjectSedBundle:Default:cursos }
+    
+preguntas:
+    pattern:  /preguntas
+    defaults: { _controller: ProjectSedBundle:Default:preguntas }
+    
+reportes:
+    pattern:  /reportes
+    defaults: { _controller: ProjectSedBundle:Default:reportes }
+    
+acerca:
+    pattern:  /acerca
+    defaults: { _controller: ProjectSedBundle:Default:acerca }

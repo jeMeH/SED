@@ -1,0 +1,74 @@
+{% extends "ProjectSedBundle:Default:base.html.twig" %}
+
+{% block contenido %}
+<form method="POST" enctype="multipart/form-data">
+    <table  border=0>
+        <tr>
+            <td>Cedula</td>
+            <td><input type="text" name="cedula" title="Ingrese el numero de cedula del docente"></td>
+        </tr>
+        <tr>
+            <td>Nombres</td>
+            <td><input type="text" name="nombres" title="Ingrese el/los nombre(s) del docente"></td>
+        </tr>
+        <tr>
+            <td>Apellidos</td>
+            <td><input type="text" name="apellidos" title="Ingres el/los apellido(s) del docente"></td>
+        </tr>
+        <tr>
+            <td>Titulo</td>
+            <td><input type="text" name="titulo" title="Ingrese el titulo principal del docente"></td>
+        </tr>
+        <tr>
+            <td>Foto</td>
+            <td><input type="file" name="foto" title="Seleccione la foto del docente. (48x48)"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Guardar">
+</form>
+<ul>
+{% for error in errores %}
+
+        <li>{{error.message}}</li>
+
+{% endfor %}
+    </ul>
+    <table border="1">
+
+        <tr> 
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Titulo</th>
+            <th>Foto</th>
+            <th>Actualizar</th>
+            <th>Eliminar</th>
+        </tr>
+
+     {#   <tr>
+            <form method = "POST">
+            <td><input type="text" name="cedula" title="Ingrese el numero de cedula del docente"></td>
+            <td><input type="text" name="nombres" title="Ingrese el/los nombre(s) del docente"></td>
+            <td><input type="text" name="apellidos" title="Ingres el/los apellido(s) del docente"></td>
+            <td><input type="text" name="titulo" title="Ingrese el titulo principal del docente"></td>
+            <td><input type="file" name="foto" title="Seleccione la foto del docente. (48x48)"></td>
+            <td><input type="submit" value="Guardar"></td>
+            </form>
+        </tr> #}
+
+    {% for docente in docentes %}
+    <tr>
+        <td >{{docente.cedula}}</td>
+        <td >{{docente.nombres}}</td>
+        <td >{{docente.apellidos}}</td>
+        <td >{{docente.titulo}}</td>
+        <td><img src="{{ asset('/fotos/'~docente.foto)}}"></td>
+        <td></td>
+        <td><a href='docentes?cedula={{docente.cedula}}' >Eliminar</a></td>
+        
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+

@@ -1,0 +1,128 @@
+/* 
+    Document   : templateCSS
+    Created on : 8/07/2013, 11:23:55 PM
+    Author     : jefferson
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    margin: 10px 100px 0px 100px;
+}
+/*header{
+    background-color: rgba(238,59,59,1);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    font-family: Verdana;
+    height: 50px;
+}*/
+
+header{
+    background-image: url("../img/logo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100px 100px;
+    height: 150px;
+    top: 10px;
+}
+
+footer{
+    background-color: rgba(255,64,64,1);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    font-family: Verdana;
+    text-align: center;
+    font-size: small;
+   position: relative;
+}
+
+nav{
+    position: absolute;
+    background-color: rgba(238,59,59,1);
+    -webkit-border-radius: 10px;
+    /*width: 650px;*/
+    /*height: 50px;*/
+    right:100px;
+    font-size:initial;
+    border-bottom:2px solid black;
+    border-left:2px solid  black;
+
+
+}
+
+
+
+.item {
+    display:inline-block;
+    min-height:10px;
+    min-width:75px;
+    padding:5px;
+    text-align:center;
+    -moz-transition:all 1s;
+    -o-transition:all 1s;
+    -webkit--o-transition:all 1s;
+    -ms-o-transition:all 1s;
+    color:black;
+    font-family: verdana;
+}
+.itemSearch {
+    display:inline-block;
+    height: 10px;
+    min-height:5px;
+    min-width:75px;
+    padding:5px;
+    text-align:center;
+    color:black;
+    -webkit-border-radius: 5px;
+    text-align: left;
+    -moz-transition:all 1s;
+    -o-transition:all 1s;
+    -webkit--o-transition:all 1s;
+    font-family: verdana;
+    margin-right:25px;
+}
+
+
+#panel {
+    /*border: 1px solid black;*/
+}
+
+#imagen{
+    width: 640px;
+    height: 428px;
+    float: left
+}
+
+#encuesta{
+    float:right;
+}
+
+#contenedor{
+    /*text-align: center;*/
+    margin:10px 0 10px 0;
+    border: 2px solid black;
+    /*height: 430px;*/
+    border-radius: 5px;
+}
+
+#foot{
+    float: bottom;
+}
+
+.next{
+    position: relative;
+    left: 580px;
+    bottom: 214px;
+}
+.prev{
+    position: relative;
+    right: 0px;
+    bottom: 214px;
+}
+
+table{
+    width: 100%;
+}

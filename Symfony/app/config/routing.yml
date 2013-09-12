@@ -1,0 +1,4 @@
+project_sed:
+    resource: "@ProjectSedBundle/Resources/config/routing.yml"
+    prefix:   /
+

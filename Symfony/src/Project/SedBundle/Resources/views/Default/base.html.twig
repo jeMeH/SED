@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>sed - {{pagina}}</title>
+        <!--<meta http-equiv="refresh" content="2">-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="{{ asset('css/templateCSS.css') }}" type="text/css" media="all" />
+    </head>
+
+    <body>
+        <header >
+            <nav>
+                <a href="inicio"><menu class="item">Inicio</menu></a>
+                <a href="docentes"><menu class="item">Docentes</menu></a>
+                <a href="materias"><menu class="item">Materias</menu></a>
+                <a href="programas"><menu class="item">Programas</menu></a>
+                <a href="cursos"><menu class="item">Cursos</menu></a>
+                <a href="preguntas"><menu class="item">Preguntas</menu></a>
+                <a href="reportes"><menu class="item">Reportes</menu></a>
+                <a href="acerca"><menu class="item">Acerca de</menu></a>
+            </nav>
+        </header>
+
+        <div id ="contenedor">
+                {% block contenido%}
+                {% endblock %}
+
+            </div>
+            <footer>Universidad del Valle - Sede Palmira<br/><br/>&COPY;Jefferson Mendoza </footer>
+        </body>
+    </html>
