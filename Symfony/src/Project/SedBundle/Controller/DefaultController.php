@@ -101,7 +101,7 @@ class DefaultController extends Controller {
     public function preguntasAction() {
         $pregunta = new Pregunta ();
         $form = $this->createFormBuilder()
-                ->add('Pregunta','textarea')
+                ->add('pregunta','textarea')
                 ->add('Guardar','submit')
                 ->getForm();
 

@@ -1,7 +1,20 @@
 {% extends "ProjectSedBundle:Default:base.html.twig" %}
 
 {% block contenido %}
-{{ form(form) }}
+{{ form_start(form) }}
+<table border=0>
+    <tr>
+        <td>{{ form_label(form.codigo) }}</td>
+        <td>{{ form_widget(form.codigo) }}</td>
+        <td>{{ form_errors(form.codigo) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.nombre) }}</td>
+        <td>{{ form_widget(form.nombre) }}</td>
+        <td>{{ form_errors(form.nombre) }}</td>
+    </tr>
+</table>
+{{ form_end(form)}}
 <table border=1>
     <tr>
         <th>Codigo</th>
