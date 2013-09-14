@@ -138,9 +138,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Project\\SedBundle\\Controller\\DefaultController::inicioAction',  '_route' => 'inicio',);
         }
 
-        // docentes
-        if ($pathinfo === '/docentes') {
-            return array (  '_controller' => 'Project\\SedBundle\\Controller\\DefaultController::docentesAction',  '_route' => 'docentes',);
+        if (0 === strpos($pathinfo, '/docentes')) {
+            // docentes
+            if ($pathinfo === '/docentes') {
+                return array (  '_controller' => 'Project\\SedBundle\\Controller\\DefaultController::docentesAction',  '_route' => 'docentes',);
+            }
+
+            // docentesEliminar
+            if (0 === strpos($pathinfo, '/docentes/eliminar') && preg_match('#^/docentes/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'docentesEliminar')), array (  '_controller' => 'Project\\SedBundle\\Controller\\DefaultController::docentesEliminarAction',));
+            }
+
         }
 
         // materias

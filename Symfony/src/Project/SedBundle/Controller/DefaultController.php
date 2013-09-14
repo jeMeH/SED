@@ -18,11 +18,7 @@ class DefaultController extends Controller {
     }
 
     public function docentesAction() {
-        if ($_GET) {
-            $em = $this->getDoctrine()->getManager();
-            $query = $em->createQuery('delete from ProjectSedBundle:Docente d where  d.cedula = :id')->setParameter('id', $_GET['cedula']);
-            $query->getResult();
-        }
+
         $docente = new Docente();
         $form = $this->createForm(new DocenteForm(), $docente);
         $request = $this->get('request');
@@ -47,6 +43,17 @@ class DefaultController extends Controller {
             $docente = new Docente();
             $form = $this->createForm(new DocenteForm(), $docente);
         }
+        $repository = $this->getDoctrine()->getRepository('ProjectSedBundle:Docente');
+        $docentes = $repository->findAll();
+        return $this->render('ProjectSedBundle:Default:docentes.html.twig', array('pagina' => "Docentes", 'docentes' => $docentes, 'form' => $form->createView()));
+    }
+
+    public function docentesEliminarAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('delete from ProjectSedBundle:Docente d where  d.cedula = :id')->setParameter('id', $id);
+        $query->getResult();
+        $docente = new Docente();
+        $form = $this->createForm(new DocenteForm(), $docente);
         $repository = $this->getDoctrine()->getRepository('ProjectSedBundle:Docente');
         $docentes = $repository->findAll();
         return $this->render('ProjectSedBundle:Default:docentes.html.twig', array('pagina' => "Docentes", 'docentes' => $docentes, 'form' => $form->createView()));

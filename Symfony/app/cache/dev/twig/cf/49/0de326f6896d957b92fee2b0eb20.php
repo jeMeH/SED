@@ -82,7 +82,7 @@ class __TwigTemplate_cf490de326f6896d957b92fee2b0eb20 extends Twig_Template
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("fotos/" . $this->getAttribute((isset($context["docente"]) ? $context["docente"] : $this->getContext($context, "docente")), "foto"))), "html", null, true);
             echo "\"></td>
             <td><a href=\"#\"> Actualizar</a></td>
-            <td><a href='docentes?cedula=";
+            <td><a href='docentes/eliminar/";
             // line 61
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["docente"]) ? $context["docente"] : $this->getContext($context, "docente")), "cedula"), "html", null, true);
             echo "' >Eliminar</a></td>

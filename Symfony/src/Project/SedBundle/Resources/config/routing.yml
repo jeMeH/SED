@@ -6,6 +6,9 @@ docentes:
     pattern:  /docentes
     defaults: { _controller: ProjectSedBundle:Default:docentes }
     
+docentesEliminar:
+    pattern:  /docentes/eliminar/{id}
+    defaults: { _controller: ProjectSedBundle:Default:docentesEliminar }
 materias:
     pattern:  /materias
     defaults: { _controller: ProjectSedBundle:Default:materias }

@@ -58,7 +58,7 @@
             <td >{{docente.titulo}}</td>
             <td><img src="{{ asset('fotos/' ~ docente.foto)}}"></td>
             <td><a href="#"> Actualizar</a></td>
-            <td><a href='docentes?cedula={{docente.cedula}}' >Eliminar</a></td>
+            <td><a href='docentes/eliminar/{{docente.cedula}}' >Eliminar</a></td>
 
         </tr>
     {% endfor %}
