@@ -1,17 +1,40 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of MateriaFor
  *
  * @author administrador
  */
-class MateriaForm {
-    //put your code here
+
+namespace Project\SedBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class MateriaForm extends AbstractType {
+
+    protected $programas;
+
+    function buildForm(FormBuilderInterface $builder, array $options) {
+        echo $options;
+        $builder->add('codigo', 'text');
+        $builder->add('nombre', 'text');
+        $builder->add('programa', 'choice', $this->programas);
+        $builder->add('creditos', 'number');
+        $builder->add('noSemestre', 'number');
+        $builder->add('Guardar', 'submit');
+    }
+
+    public function getN() {
+        return $this->programas;
+    }
+
+    public function setProgramas($programas) {
+        $this->programas = $programas;
+    }
+
+
+
 }
 
 ?>

@@ -10,6 +10,8 @@ use Project\SedBundle\Entity\Programa;
 use Project\SedBundle\Entity\Curso;
 use Project\SedBundle\Entity\Pregunta;
 use Project\SedBundle\Form\DocenteForm;
+use Project\SedBundle\Form\CursoForm;
+use Project\SedBundle\Form\MateriaForm;
 
 class DefaultController extends Controller {
 
@@ -60,15 +62,10 @@ class DefaultController extends Controller {
     }
 
     public function materiasAction() {
+        $materiaForm = new MateriaForm();
+        $materiaForm->setProgramas( array('choices' => array('2702' => 'Tecnologia en sistemas', '2703' => 'Tecnologia en electronica')));
         $materia = new Materia();
-        $form = $this->createFormBuilder($materia)
-                ->add('codigo', 'text')
-                ->add('nombre', 'text')
-                ->add('programa', 'choice', array('choices' => array('2702' => 'Tecnologia en sistemas', '2703' => 'Tecnologia en electronica')))
-                ->add('creditos', 'number')
-                ->add('noSemestre', 'number')
-                ->add('Guardar', 'submit')
-                ->getForm();
+        $form = $this->createForm(new MateriaForm(), $materia);
         return $this->render('ProjectSedBundle:Default:materias.html.twig', array('pagina' => "Materias", 'form' => $form->createView()));
     }
 
@@ -85,12 +82,7 @@ class DefaultController extends Controller {
 
     public function cursosAction() {
         $curso = new Curso();
-        $form = $this->createFormBuilder()
-                ->add('docente', 'choice', array('choices' => array('1113666505' => 'Jefferson Mendoza')))
-                ->add('materia', 'choice', array('choices' => array('110050M' => 'Calculo I')))
-                ->add('grupo', 'number')
-                ->add('Guardar', 'submit')
-                ->getForm();
+        $form = $this->createForm(new CursoForm(),$curso);
         return $this->render('ProjectSedBundle:Default:cursos.html.twig', array('pagina' => "Cursos", 'form' => $form->createView()));
     }
 
