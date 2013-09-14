@@ -1,25 +1,7 @@
 {% extends "ProjectSedBundle:Default:base.html.twig" %}
 
 {% block contenido %}
-{{ form_start(form) }}
-<table border=0>
-    <tr>
-        <td>{{ form_label(form.docente) }}</td>
-        <td>{{ form_widget(form.docente) }}</td>
-        <td>{{ form_errors(form.docente) }}</td>
-    </tr>
-    <tr>
-        <td>{{ form_label(form.materia) }}</td>
-        <td>{{ form_widget(form.materia) }}</td>
-        <td>{{ form_errors(form.materia) }}</td>
-    </tr>
-    <tr>
-        <td>{{ form_label(form.grupo) }}</td>
-        <td>{{ form_widget(form.grupo) }}</td>
-        <td>{{ form_errors(form.grupo) }}</td>
-    </tr>
-</table>
-{{ form_end(form) }}
+{{ form(form) }}
 <table border=1>
     <tr>
         <th>Docente</th>

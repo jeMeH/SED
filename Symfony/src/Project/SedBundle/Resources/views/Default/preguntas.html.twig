@@ -2,15 +2,8 @@
 
 {% block contenido %}
 
-{{ form_start(form) }}
-<table border=0>
-    <tr>
-        <td>{{ form_label(form.pregunta)}}</td>
-        <td>{{ form_widget(form.pregunta)}}</td>
-        <td>{{ form_errors(form.pregunta)}}</td>
-    </tr>
-</table>
-{{ form_end(form) }}
+{{ form(form) }}
+
 
 
 <table border=1>

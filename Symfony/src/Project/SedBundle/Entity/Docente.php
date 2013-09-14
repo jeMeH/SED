@@ -57,15 +57,18 @@ class Docente {
     /**
      * Constructor
      */
-    function __construct($cedula, $nombres, $apellidos, $titulo, $foto) {
-        $this->cedula = $cedula;
-        $this->nombres = $nombres;
-        $this->apellidos = $apellidos;
-        $this->titulo = $titulo;
-        $this->foto = $foto;
+//    function __construct($cedula, $nombres, $apellidos, $titulo, $foto) {
+//        $this->cedula = $cedula;
+//        $this->nombres = $nombres;
+//        $this->apellidos = $apellidos;
+//        $this->titulo = $titulo;
+//        $this->foto = $foto;
+//        $this->cursos = new \Doctrine\Common\Collections\ArrayCollection();
+//    }
+    
+    function __construct() {
         $this->cursos = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
     /**
      * Set cedula
      *

@@ -9,6 +9,7 @@ use Project\SedBundle\Entity\Materia;
 use Project\SedBundle\Entity\Programa;
 use Project\SedBundle\Entity\Curso;
 use Project\SedBundle\Entity\Pregunta;
+use Project\SedBundle\Form\DocenteForm;
 
 class DefaultController extends Controller {
 
@@ -22,46 +23,34 @@ class DefaultController extends Controller {
             $query = $em->createQuery('delete from ProjectSedBundle:Docente d where  d.cedula = :id')->setParameter('id', $_GET['cedula']);
             $query->getResult();
         }
-        $errores = "";
-        if ($_POST) {
-            /* Analizando y tomando el archivo */
-            $fotosDir = $this->container->getParameter('fotos_dir');
-            $fotoNombre = $_FILES['foto']['name'];
-            $fotoFichero = $_FILES['foto']['tmp_name'];
-            if ($fotoNombre == "") {
-                $fotoNombre = "nofoto.jpg";
-            } else {
-                $fotoNombre = $_POST['cedula'] . ".jpg";
-                move_uploaded_file($fotoFichero, $fotosDir . '/' . $fotoNombre);
-            }
-            $docente = new Docente($_POST['cedula'], $_POST['nombres'], $_POST['apellidos'], $_POST['titulo'], $fotoNombre);
-            /* validando campos */
-            $validador = $this->get('validator');
-            $errores = $validador->validate($docente);
-            if (count($errores) <= 0) {
+        $docente = new Docente();
+        $form = $this->createForm(new DocenteForm(), $docente);
+        $request = $this->get('request');
+        /*
+         * Se captura si existe la solicitud post. Si asi es, se persiste el objeto
+         */
+        if ($request->getMethod('POST')) {
+            $form->bind($request);
+            $cedula = $form['cedula']->getData();
+            if ($form->isValid()) {
+                if ($form['foto']->getData() != "") {
+                    $docente->setFoto($cedula . ".jpg");
+                    $fotosDir = $this->container->getParameter('fotos_dir');
+                    $form['foto']->getData()->move($fotosDir, $cedula . ".jpg");
+                } else {
+                    $docente->setFoto("nofoto.jpg");
+                }
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($docente); //persisitendo
+                $em->persist($docente);
                 $em->flush();
             }
+            $docente = new Docente();
+            $form = $this->createForm(new DocenteForm(), $docente);
         }
-        $repository = $this->getDoctrine()
-                ->getRepository('ProjectSedBundle:Docente');
-
+        $repository = $this->getDoctrine()->getRepository('ProjectSedBundle:Docente');
         $docentes = $repository->findAll();
-
-        return $this->render('ProjectSedBundle:Default:docentes.html.twig', array('pagina' => "Docentes", 'docentes' => $docentes, 'errores' => $errores));
+        return $this->render('ProjectSedBundle:Default:docentes.html.twig', array('pagina' => "Docentes", 'docentes' => $docentes, 'form' => $form->createView()));
     }
-
-//        $form = $this->createFormBuilder($docente)
-//        ->add('cedula', 'text')
-//        ->add('nombres', 'text')
-//        ->add('apellidos', 'text')
-//        ->add('titulo', 'text')
-//        ->add('foto', 'file')
-//        ->add('Guardar', 'submit')
-//        ->getForm();
-//return $this->render('ProjectSedBundle:Default:docentes.html.twig', array('pagina' => "Docentes", 'form' => $form->createView()));
-
 
     public function materiasAction() {
         $materia = new Materia();
@@ -101,11 +90,11 @@ class DefaultController extends Controller {
     public function preguntasAction() {
         $pregunta = new Pregunta ();
         $form = $this->createFormBuilder()
-                ->add('pregunta','textarea')
-                ->add('Guardar','submit')
+                ->add('pregunta', 'textarea')
+                ->add('Guardar', 'submit')
                 ->getForm();
 
-        return $this->render('ProjectSedBundle:Default:preguntas.html.twig', array('pagina' => "Preguntas", 'form' =>$form->createView()));
+        return $this->render('ProjectSedBundle:Default:preguntas.html.twig', array('pagina' => "Preguntas", 'form' => $form->createView()));
     }
 
     public function reportesAction() {

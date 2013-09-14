@@ -1,11 +1,10 @@
-# This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: null
     database_name: sedu
     database_user: root
-    database_password: toor
+    database_password: 
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
@@ -13,4 +12,4 @@ parameters:
     locale: en
     secret: f2ec23d967cce2f467254d3a013bb4e6e004b4b2
     database_path: null
-    fotos_dir: %kernel.root_dir%/../web/fotos
+    fotos_dir: '%kernel.root_dir%/../web/fotos'

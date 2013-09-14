@@ -127,3 +127,9 @@ nav{
 table{
     width: 100%;
 }
+
+label {
+    width: 110px;
+    display:block;
+    float:left;
+}
